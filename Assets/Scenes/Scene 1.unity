@@ -394,7 +394,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  camera: {fileID: 963194227}
+  cameraForRay: {fileID: 963194227}
 --- !u!4 &939266647
 Transform:
   m_ObjectHideFlags: 0

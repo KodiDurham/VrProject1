@@ -10,13 +10,15 @@ public class rayShot : MonoBehaviour
     public Gradient badHit;
 
 
-    public Camera camera;
+    public Camera cameraForRay;
     RaycastHit hit;
 
     float xRot = 0;
     float yRot = 0;
 
     bool isTargetMode = false;
+
+    Transform lastGoodHit;
 
 
     // Start is called before the first frame update
@@ -39,12 +41,16 @@ public class rayShot : MonoBehaviour
 
         xRot = Mathf.Clamp(xRot, -90, 90);
 
-        Debug.Log(xRot +", " +yRot);
 
         transform.localRotation = Quaternion.Euler(xRot, yRot, 0f);
 
-        if (Input.GetMouseButtonDown(0) && isTargetMode==false)
+        if (Input.GetMouseButtonDown(0) && isTargetMode == false)
+        {
             isTargetMode = true;
+            //initalize last good teleport location with the start of hitting the 
+            lastGoodHit = this.gameObject.transform;
+        }
+            
 
 
         if (isTargetMode/*Input.GetMouseButtonDown(0)*/)
@@ -60,7 +66,7 @@ public class rayShot : MonoBehaviour
 
             }
 
-            Ray ray = new Ray(camera.transform.position, camera.transform.forward);
+            Ray ray = new Ray(cameraForRay.transform.position, cameraForRay.transform.forward);
             //Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit))
@@ -72,20 +78,37 @@ public class rayShot : MonoBehaviour
                 gColor.enabled = true;
 
                 if (objectHit.tag == "ground")
+                {
                     gColor.color = goodHit;
+
+                    //lastGoodHit.position = hit.point;
+
+                    Debug.Log("test");
+                }
                 else
+                {
                     gColor.color = badHit;
+                }
 
                 particleForMove.transform.position = new Vector3(hit.point.x, particleForMove.transform.position.y, hit.point.z); //hit.transform.position;
 
                 if (objectHit.tag == "ground" && Input.GetMouseButtonUp(0))
                 {
-                    Debug.Log(Input.mousePosition);
+
                     this.transform.position = new Vector3(hit.point.x, this.transform.position.y, hit.point.z); //hit.transform.position;
                     isTargetMode = false;
                     particleForMove.SetActive(false);
-                }
 
+                }
+                else if (Input.GetMouseButtonUp(0) && (objectHit.tag != "ground" || objectHit == null))
+                {
+                    //teleportTo(lastGoodHit.position, this.gameObject);
+                    this.gameObject.transform.position = new Vector3(lastGoodHit.position.x, this.gameObject.transform.position.y, lastGoodHit.position.z);
+
+                    isTargetMode = false;
+
+                    particleForMove.SetActive(false);
+                }
             }
         }
     }
