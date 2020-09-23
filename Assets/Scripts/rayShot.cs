@@ -18,7 +18,7 @@ public class rayShot : MonoBehaviour
 
     bool isTargetMode = false;
 
-    Transform lastGoodHit;
+    //Transform lastGoodHit;
 
 
     // Start is called before the first frame update
@@ -48,7 +48,7 @@ public class rayShot : MonoBehaviour
         {
             isTargetMode = true;
             //initalize last good teleport location with the start of hitting the 
-            lastGoodHit = this.gameObject.transform;
+            //lastGoodHit = this.gameObject.transform;
         }
             
 
@@ -69,21 +69,21 @@ public class rayShot : MonoBehaviour
             Ray ray = new Ray(cameraForRay.transform.position, cameraForRay.transform.forward);
             //Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
+            ParticleSystem indicator = particleForMove.GetComponent<ParticleSystem>();
+
+            var gColor = indicator.colorOverLifetime;
+            gColor.enabled = true;
+
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
-                ParticleSystem indicator = particleForMove.GetComponent<ParticleSystem>();
-
-                var gColor =  indicator.colorOverLifetime;
-                gColor.enabled = true;
 
                 if (objectHit.tag == "ground")
                 {
                     gColor.color = goodHit;
 
-                    //lastGoodHit.position = hit.point;
 
-                    Debug.Log("test");
+                    //Debug.Log("test");
                 }
                 else
                 {
@@ -102,13 +102,28 @@ public class rayShot : MonoBehaviour
                 }
                 else if (Input.GetMouseButtonUp(0) && (objectHit.tag != "ground" || objectHit == null))
                 {
-                    //teleportTo(lastGoodHit.position, this.gameObject);
-                    this.gameObject.transform.position = new Vector3(lastGoodHit.position.x, this.gameObject.transform.position.y, lastGoodHit.position.z);
+                    
 
                     isTargetMode = false;
 
                     particleForMove.SetActive(false);
                 }
+            }
+            else
+            {
+                
+                gColor.color = badHit;
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    //teleportTo(lastGoodHit.position, this.gameObject);
+
+                    isTargetMode = false;
+
+                    particleForMove.SetActive(false);
+                }
+
+                
             }
         }
     }
