@@ -14,7 +14,7 @@ public class rayShot : MonoBehaviour
     RaycastHit hit;
 
     float xRot = 0;
-    float yRot = 0;
+    float yRot = 180;
 
     bool isTargetMode = false;
 
@@ -24,6 +24,7 @@ public class rayShot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         particleForMove.SetActive(false);
@@ -42,7 +43,8 @@ public class rayShot : MonoBehaviour
         xRot = Mathf.Clamp(xRot, -90, 90);
 
 
-        transform.localRotation = Quaternion.Euler(xRot, yRot, 0f);
+        cameraForRay.transform.localRotation = Quaternion.Euler(xRot, yRot, 0f);
+	    cameraForRay.transform.position = this.transform.position;
 
         if (Input.GetMouseButtonDown(0) && isTargetMode == false)
         {
