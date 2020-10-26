@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.CodeDom.Compiler;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +8,28 @@ public class Round : ScriptableObject
 {
     public int roundNum;
     public int currentScore;
-    public List<int> highScores;
-    public List<int> highScoreNames;
-    public int time;
-    public GameObject targets;
+    public int[] highScores;
+    public float time;
+    public int scoreToPass;
     public bool hasFinished;
+
+    public bool isHighScore(int num)
+    {
+        bool isHigh=false;
+
+        for (int i =0; i<highScores.Length;i++)
+        {
+            if (num > highScores[i])
+            {
+                isHigh = true;
+                highScores[highScores.Length - 1] = num;
+                System.Array.Sort(highScores);
+                break;
+            }
+        }
+
+
+        return isHigh;
+    }
 
 }

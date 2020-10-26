@@ -13,10 +13,17 @@ public class GoalMove : MonoBehaviour
 
     bool isGoingA=true;
 
+    public Transform startTransform;
+
+    private void OnEnable()
+    {
+        this.transform.position = startTransform.position;
+        isGoingA = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

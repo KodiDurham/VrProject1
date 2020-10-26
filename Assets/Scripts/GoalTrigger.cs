@@ -25,11 +25,19 @@ public class GoalTrigger : MonoBehaviour
     //    Debug.Log("GOOOOAAAAL!!!");
     //}
 
+    private void OnEnable()
+    {
+        visualEffect.Stop();
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("GOOOOAAAAL!!!");
-        visualEffect.Play();
-        Manager.updateScore(goalValue);
-
+        //Debug.Log("GOOOOAAAAL!!!");
+        if (other.tag=="ball")
+        {
+            visualEffect.Play();
+            Manager.updateScore(goalValue);
+        }
     }
 }
