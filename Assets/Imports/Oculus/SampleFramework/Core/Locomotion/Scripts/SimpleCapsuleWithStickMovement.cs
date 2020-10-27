@@ -36,8 +36,8 @@ public class SimpleCapsuleWithStickMovement : MonoBehaviour
         if (PreCharacterMove != null) PreCharacterMove();
 
         if (HMDRotatesPlayer) RotatePlayerToHMD();
-		if (EnableLinearMovement) StickMovement();
-		if (EnableRotation) SnapTurn();
+		//if (EnableLinearMovement) StickMovement();
+		SnapTurn();
 	}
 
     void RotatePlayerToHMD()

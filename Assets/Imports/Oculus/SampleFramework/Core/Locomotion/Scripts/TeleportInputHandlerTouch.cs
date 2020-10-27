@@ -17,8 +17,8 @@ using UnityEngine.Assertions;
 /// </summary>
 public class TeleportInputHandlerTouch : TeleportInputHandlerHMD
 {
-	public Transform LeftHand;
-	public Transform RightHand;
+	public OVRGrabber LeftHand;
+	public OVRGrabber RightHand;
 
 	/// <summary>
 	/// The touch input handler supports three different modes for controlling teleports.
@@ -265,7 +265,7 @@ public class TeleportInputHandlerTouch : TeleportInputHandlerHMD
 		{
 			sourceController = InitiatingController;
 		}
-		Transform t = (sourceController == OVRInput.Controller.LTouch) ? LeftHand : RightHand;
+		Transform t = (sourceController == OVRInput.Controller.LTouch) ? LeftHand.transform : RightHand.transform;
 		aimRay = new Ray(t.position, t.forward);
 	}
 }

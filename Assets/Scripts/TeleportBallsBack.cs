@@ -6,7 +6,9 @@ public class TeleportBallsBack : MonoBehaviour
 {
     public GameObject ball;
     public Transform spawnPoint;
-    public shotScript test;
+
+    public OVRInput.Button ballTelButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class TeleportBallsBack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Button.One))
+        if (OVRInput.GetDown(ballTelButton))
         {
             ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
             ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;

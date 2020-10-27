@@ -6,11 +6,13 @@ public class GoalTrigger : MonoBehaviour
 {
     public ParticleSystem visualEffect;
     public BallThrowManager Manager;
+    public AudioSource sound;
     public int goalValue = 10;
 
     // Start is called before the first frame update
     void Start()
     {
+        sound.Stop();
         visualEffect.Stop();
     }
 
@@ -27,6 +29,7 @@ public class GoalTrigger : MonoBehaviour
 
     private void OnEnable()
     {
+        sound.Stop();
         visualEffect.Stop();
     }
 
@@ -36,6 +39,7 @@ public class GoalTrigger : MonoBehaviour
         //Debug.Log("GOOOOAAAAL!!!");
         if (other.tag=="ball")
         {
+            sound.Play();
             visualEffect.Play();
             Manager.updateScore(goalValue);
         }

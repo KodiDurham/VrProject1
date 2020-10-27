@@ -132,7 +132,7 @@ public class BallThrowManager : MonoBehaviour
         stop.interactable = true;
     }
 
-    public bool playStop()
+    public void playStop()
     {
         isTimerActive = false;
         timer = 0;
@@ -169,10 +169,13 @@ public class BallThrowManager : MonoBehaviour
         }
 
 
-        scoreRePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text=output;
-        scoreRePanel.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ""+ score;
+        scoreRePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = output;
+        scoreRePanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + score;
 
-        if (score < curRound.scoreToPass || curRoundInt+1==roundScripts.Length)
+        Debug.Log(""+ (score < curRound.scoreToPass));
+        Debug.Log("" + (curRoundInt >= roundScripts.Length));
+
+        if (score < curRound.scoreToPass || curRoundInt >= roundScripts.Length)
         {
             next.interactable = false;
         }
@@ -180,37 +183,20 @@ public class BallThrowManager : MonoBehaviour
         {
             next.interactable = true;
         }
-        return true;
     }
 
 
     public void switchRound()
     {
         curRoundInt++;
-        if (curRoundInt >= roundScripts.Length)
-        {
-            triggerMenusOut();
-            triggerMenus();
-        }
-        else
-        {
             curRound = roundScripts[curRoundInt];
             updateScore(0);
             updateRoundText();
-        }
     }
 
     public void DeavtivateRound()
     {
-        if (curRoundInt >= RoundsGameObjects.Length)
-        {
-            triggerMenusOut();
-            triggerMenus();
-        }
-        else
-        {
             RoundsGameObjects[curRoundInt].SetActive(false);
-        }
     }
 
     public void setRound(int num)
@@ -251,13 +237,17 @@ public class BallThrowManager : MonoBehaviour
 
     public void triggerMenusOut()
     {
-        if (playStop())
-        {
+
+            isTimerActive = false;
+            timer = 0;
+            DeavtivateRound();
+            scorePanel.SetActive(false); // play Display
+
             //highScorePanel.SetActive(false);
             welcomePanel.SetActive(false);
             scoreRePanel.SetActive(false);
             m_menuPanel.SetActive(false);
             roundSelectPanel.SetActive(false);
-        }
+            menuPanel.SetActive(false);
     }
 }

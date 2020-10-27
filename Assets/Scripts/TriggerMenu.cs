@@ -25,6 +25,7 @@ public class TriggerMenu : MonoBehaviour
 
     }
 
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "player")
