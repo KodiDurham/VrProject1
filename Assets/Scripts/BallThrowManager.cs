@@ -36,6 +36,11 @@ public class BallThrowManager : MonoBehaviour
     public Button stop;
     public Button next;
 
+    public Material wall;
+    public Material target1;
+    public Material target2;
+
+
 
     private bool isTimerActive;
 
@@ -55,6 +60,7 @@ public class BallThrowManager : MonoBehaviour
         isTimerActive = false;
         curRound = roundScripts[0];
         curRoundInt = 0;
+
     }
 
     // Update is called once per frame
@@ -83,7 +89,8 @@ public class BallThrowManager : MonoBehaviour
         timer = curRound.time;
         //highScorePanel.SetActive(true);
         m_menuPanel.SetActive(false);
-        Debug.Log("Time: ");
+        play.interactable = true;
+        stop.interactable = false;
         updateTimerText();
         updateRoundText();
     }
@@ -94,6 +101,9 @@ public class BallThrowManager : MonoBehaviour
         roundSelectPanel.SetActive(true);
         m_menuPanel.SetActive(false);
         //more maybe required
+        roundSelectPanel.transform.GetChild(1).GetComponent<ButtonRoundClick>().GetValues();
+        roundSelectPanel.transform.GetChild(2).GetComponent<ButtonRoundClick>().GetValues();
+        roundSelectPanel.transform.GetChild(3).GetComponent<ButtonRoundClick>().GetValues();
     }
 
     public void startScoreNext()
@@ -172,10 +182,9 @@ public class BallThrowManager : MonoBehaviour
         scoreRePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = output;
         scoreRePanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + score;
 
-        Debug.Log(""+ (score < curRound.scoreToPass));
         Debug.Log("" + (curRoundInt >= roundScripts.Length));
 
-        if (score < curRound.scoreToPass || curRoundInt >= roundScripts.Length)
+        if (score < curRound.scoreToPass || curRoundInt+1 >= roundScripts.Length)
         {
             next.interactable = false;
         }
@@ -208,6 +217,9 @@ public class BallThrowManager : MonoBehaviour
     public void activateRound()
     {
         RoundsGameObjects[curRoundInt].SetActive(true);
+        //wall.SetFloat("Vector1_E274ECF9", Mathf.Lerp(1,-.1f,5));
+        //target1.SetFloat("Vector1_2C783208", Mathf.Lerp(1, -.1f, 5));
+        //target2.SetFloat("Vector1_2C783208", Mathf.Lerp(1, -.1f, 5));
     }
 
     public void updateScore(int num)

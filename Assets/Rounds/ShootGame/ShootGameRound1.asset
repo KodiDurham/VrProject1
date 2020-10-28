@@ -17,4 +17,4 @@ MonoBehaviour:
   highScores: 0000000000000000000000000000000000000000
   time: 200
   scoreToPass: 20
-  hasFinished: 0
+  hasFinished: 1

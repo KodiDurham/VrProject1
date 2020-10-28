@@ -18,11 +18,7 @@ public class ButtonRoundClick : MonoBehaviour
         this.GetComponent<Button>().onClick.AddListener(TaskOnClick);
         childIndex = this.transform.GetSiblingIndex();
         roundName.text = "Round " + childIndex;
-    }
-
-    private void OnEnable()
-    {
-        if (manager.roundScripts[childIndex - 1].hasFinished)
+        if (manager.roundScripts[childIndex-1].hasFinished)
         {
             GetComponent<Button>().interactable = true;
         }
@@ -32,6 +28,26 @@ public class ButtonRoundClick : MonoBehaviour
         }
     }
 
+
+    private void OnEnable()
+    {
+
+    }
+
+
+    public void GetValues()
+    {
+        childIndex = this.transform.GetSiblingIndex();
+        Debug.Log("" + (childIndex - 1)+" " +gameObject.name );
+        if (manager.roundScripts[childIndex - 1].hasFinished)
+        {
+            GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            GetComponent<Button>().interactable = false;
+        }
+    }
     // Update is called once per frame
     void Update()
     {

@@ -5,12 +5,20 @@ using UnityEngine;
 public class targetScript : MonoBehaviour
 {
     public BallThrowManager manager;
-    int hitValue = 10;
+    public int hitValue = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
+    }
+
+    private void OnEnable()
+    {
+        if (this.transform.childCount > 0)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -22,6 +30,7 @@ public class targetScript : MonoBehaviour
     public void hit()
     {
         manager.updateScore(hitValue);
+        this.gameObject.SetActive(false);
     }
 
 }
