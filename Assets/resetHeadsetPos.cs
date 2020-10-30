@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class resetHeadsetPos : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {

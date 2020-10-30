@@ -384,6 +384,11 @@ PrefabInstance:
       propertyPath: EnableMovementDuringPreTeleport
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7662058842481165937, guid: ce816f2e6abb0504092c23ed9b970dfd,
+        type: 3}
+      propertyPath: UseCharacterCollisionData
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8864551058321916465, guid: ce816f2e6abb0504092c23ed9b970dfd,
         type: 3}
       propertyPath: LeftHand
