@@ -6,22 +6,27 @@ public class triggerAudio : MonoBehaviour
 {
 
     public AudioSource sound;
+    public AudioSource sound2;
+    public bool isSecondSound=false;
 
     // Start is called before the first frame update
     void Start()
     {
-        sound.enabled = false;
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        foreach(ContactPoint contact in collision.contacts)
+        if (isSecondSound)
         {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
+            sound.Stop();
+            sound2.Play();
         }
-        Debug.Log(""+collision.gameObject.name);
-            sound.enabled = true;
+        else 
+        { 
+            sound.Play(); 
+        }
+
     }
 
     //private void OnCollisionExit(Collision collision)

@@ -115,8 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitExplode: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   speed: 100
-  distError: 1
+  distError: 4
   target: {fileID: 0}
+  hitsound: {fileID: 2431658243089403534, guid: a22e90a61c7a760478e988f6b036fb1c,
+    type: 3}
 --- !u!136 &8269653620578910415
 CapsuleCollider:
   m_ObjectHideFlags: 0

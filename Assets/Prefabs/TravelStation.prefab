@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8220657713044432186}
   - component: {fileID: 960644996627837483}
   - component: {fileID: 4372338095827314575}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 2514305601172468204}
   - component: {fileID: 1755768442384879518}
   - component: {fileID: 760903708603708104}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Start Menu (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 7754422197845879404}
   - component: {fileID: 501763746497274823}
   - component: {fileID: 960346172603698317}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 293874595692473638}
   - component: {fileID: 7406063081149001764}
   - component: {fileID: 350751162127251506}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 653949120020382761}
   - component: {fileID: 9174730276737975215}
   - component: {fileID: 4442524409899188280}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Welcome Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 8683972680784228255}
   - component: {fileID: 2639214899118954124}
   - component: {fileID: 6257770783342847948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 4323816230005898641}
   - component: {fileID: 7437218401216026396}
   - component: {fileID: 8030548289971501077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TravelStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 24e1ac63dd3298641978b6c69add2126, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 7750865063144380812}
   - component: {fileID: 40724389677590864}
   - component: {fileID: 3730956700734177815}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Menu Panel Trigger (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

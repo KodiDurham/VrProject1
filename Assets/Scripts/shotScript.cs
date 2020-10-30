@@ -17,6 +17,8 @@ public class shotScript : MonoBehaviour
     private OVRGrabbable grabbable;
     public OVRInput.Button shootButton;
 
+    public AudioSource shotsound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,10 @@ public class shotScript : MonoBehaviour
         //    GameObject laser = GameObject.Instantiate(shotPrefab, shotPos2.position, shotPos2.rotation) as GameObject;
         //   GameObject.Destroy(laser, 2f);
         //}
+
+        shotsound.Play();
+        VibeManager.singleton.triggerViberationController(shotsound.clip, grabbable.grabbedBy.GetController());
+
         GameObject laser = GameObject.Instantiate(shotPrefab, shotPos1.position, shotPos1.rotation) as GameObject;
         GameObject.Destroy(laser, 2f);
 

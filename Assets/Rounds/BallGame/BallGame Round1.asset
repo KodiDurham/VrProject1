@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundNum: 1
   currentScore: 100
-  highScores: 0a00000005000000030000000200000001000000
+  highScores: 0100000002000000030000000400000005000000
   time: 300
   scoreToPass: 10
   hasFinished: 1

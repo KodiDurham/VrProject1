@@ -6,7 +6,6 @@ using TMPro;
 public class leaderboardScript : MonoBehaviour
 {
     public BallThrowManager manager;
-    public GameObject entry;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,24 +17,18 @@ public class leaderboardScript : MonoBehaviour
     {
         
     }
-    //private void OnEnable()
-    //{
-    //    int[] currentRoundInts = manager.curRound.highScores;
+    private void OnEnable()
+    {
 
-    //    for(int i= 0; i < this.transform.childCount; i++)
-    //    {
-    //        Destroy(this.transform.GetChild(0));
-    //    }
-    //    GameObject entryCopy = Instantiate(entry);
-    //    entryCopy.transform.parent = this.transform;
-    //    entryCopy.GetComponent<TextMeshProUGUI>().text="Leaderboard";
+    }
 
-    //    for(int i = 0; i < currentRoundInts.Length; i++)
-    //    {
-    //        entryCopy = Instantiate(entry);
-    //        entryCopy.transform.parent = this.transform;
-    //        entryCopy.GetComponent<TextMeshProUGUI>().text = ""+(i+1)+".\t"+currentRoundInts[i];
-    //    }
+    public void updateText()
+    {
+        int childIndex = this.transform.GetSiblingIndex();
+        int score = manager.curRound.highScores[manager.curRound.highScores.Length - childIndex];
 
-    //}
+        Debug.Log(""+childIndex+", " +score);
+
+        this.GetComponent<TextMeshProUGUI>().text = "" + childIndex + ":  " + score;
+    }
 }

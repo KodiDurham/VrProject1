@@ -6,6 +6,7 @@ public class targetScript : MonoBehaviour
 {
     public BallThrowManager manager;
     public int hitValue = 10;
+    public GameObject hitSound;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,11 @@ public class targetScript : MonoBehaviour
 
     public void hit()
     {
+        GameObject sound = Instantiate(hitSound, Vector3.zero, Quaternion.Inverse(transform.rotation));
+        Destroy(sound, 1f);
         manager.updateScore(hitValue);
         this.gameObject.SetActive(false);
+        
     }
 
 }

@@ -36,9 +36,9 @@ public class BallThrowManager : MonoBehaviour
     public Button stop;
     public Button next;
 
-    public Material wall;
-    public Material target1;
-    public Material target2;
+    //public Material wall;
+    //public Material target1;
+    //public Material target2;
 
 
 
@@ -87,7 +87,8 @@ public class BallThrowManager : MonoBehaviour
         scorePanel.SetActive(true);
         setRound(0);
         timer = curRound.time;
-        //highScorePanel.SetActive(true);
+        highScorePanel.SetActive(true);
+        updateLeaderBoard();
         m_menuPanel.SetActive(false);
         play.interactable = true;
         stop.interactable = false;
@@ -112,7 +113,7 @@ public class BallThrowManager : MonoBehaviour
         switchRound();
         timer = curRound.time;
         scorePanel.SetActive(true);
-        //highScorePanel.SetActive(true);
+        updateLeaderBoard();
         scoreRePanel.SetActive(false);
         updateTimerText();
         updateRoundText();
@@ -124,7 +125,7 @@ public class BallThrowManager : MonoBehaviour
         score = 0;
         timer = curRound.time;
         scorePanel.SetActive(true);
-        //highScorePanel.SetActive(true);
+        updateLeaderBoard();
         scoreRePanel.SetActive(false);
         updateTimerText();
 
@@ -155,28 +156,31 @@ public class BallThrowManager : MonoBehaviour
 
         string output;
 
-        //if(score < curRound.scoreToPass)
-        //{
-        //    output = failText;
-        //}else if (curRound.isHighScore(score))
-        //{
-        //    output = highScoreText;
-        //    scoreRePanel.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "" + curRound.highScores.;
-        //}
-        //else
-        //{
-        //    output = passText;
-        //}
-
         if (score < curRound.scoreToPass)
         {
             output = failText;
+        }
+        else if (curRound.isHighScore(score))
+        {
+            output = highScoreText;
+            updateLeaderBoard();
+            curRound.hasFinished = true;
         }
         else
         {
             output = passText;
             curRound.hasFinished = true;
         }
+
+        //if (score < curRound.scoreToPass)
+        //{
+        //    output = failText;
+        //}
+        //else
+        //{
+        //    output = passText;
+        //    curRound.hasFinished = true;
+        //}
 
 
         scoreRePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = output;
@@ -198,9 +202,9 @@ public class BallThrowManager : MonoBehaviour
     public void switchRound()
     {
         curRoundInt++;
-            curRound = roundScripts[curRoundInt];
-            updateScore(0);
-            updateRoundText();
+        curRound = roundScripts[curRoundInt];
+        updateScore(0);
+        updateRoundText();
     }
 
     public void DeavtivateRound()
@@ -255,11 +259,22 @@ public class BallThrowManager : MonoBehaviour
             DeavtivateRound();
             scorePanel.SetActive(false); // play Display
 
-            //highScorePanel.SetActive(false);
+            highScorePanel.SetActive(false);
             welcomePanel.SetActive(false);
             scoreRePanel.SetActive(false);
             m_menuPanel.SetActive(false);
             roundSelectPanel.SetActive(false);
             menuPanel.SetActive(false);
+    }
+
+    public void updateLeaderBoard()
+    {
+        GameObject panel = highScorePanel.transform.GetChild(0).gameObject;
+
+        for(int i = 1; i < panel.transform.childCount; i++)
+        {
+            panel.transform.GetChild(i).GetComponent<leaderboardScript>().updateText();
+        }
+
     }
 }

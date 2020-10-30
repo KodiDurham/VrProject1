@@ -13,6 +13,8 @@ public class shotMovement : MonoBehaviour
     public GameObject target;
     private bool hasTarget=false;
 
+    public GameObject hitsound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +29,11 @@ public class shotMovement : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, endPos)<distError)
             {
+                GameObject sound = Instantiate(hitsound, endPos, Quaternion.Inverse(transform.rotation));
                 GameObject explosion = Instantiate(hitExplode, endPos, Quaternion.Inverse(transform.rotation));
                 Destroy(gameObject);
                 Destroy(explosion, 1f);
+                Destroy(sound, 1f);
                 if (hasTarget)
                 {
                     target.GetComponent<targetScript>().hit();

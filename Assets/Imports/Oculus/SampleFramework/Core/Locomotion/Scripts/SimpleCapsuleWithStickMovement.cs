@@ -54,20 +54,20 @@ public class SimpleCapsuleWithStickMovement : MonoBehaviour
 		root.rotation = prevRot;
     }
 
-	void StickMovement()
-	{
-		Quaternion ort = CameraRig.centerEyeAnchor.rotation;
-		Vector3 ortEuler = ort.eulerAngles;
-		ortEuler.z = ortEuler.x = 0f;
-		ort = Quaternion.Euler(ortEuler);
+	//void StickMovement()
+	//{
+	//	Quaternion ort = CameraRig.centerEyeAnchor.rotation;
+	//	Vector3 ortEuler = ort.eulerAngles;
+	//	ortEuler.z = ortEuler.x = 0f;
+	//	ort = Quaternion.Euler(ortEuler);
 
-		Vector3 moveDir = Vector3.zero;
-		Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-		moveDir += ort * (primaryAxis.x * Vector3.right);
-		moveDir += ort * (primaryAxis.y * Vector3.forward);
-		//_rigidbody.MovePosition(_rigidbody.transform.position + moveDir * Speed * Time.fixedDeltaTime);
-		_rigidbody.MovePosition(_rigidbody.position + moveDir * Speed * Time.fixedDeltaTime);
-	}
+	//	Vector3 moveDir = Vector3.zero;
+	//	Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+	//	moveDir += ort * (primaryAxis.x * Vector3.right);
+	//	moveDir += ort * (primaryAxis.y * Vector3.forward);
+	//	//_rigidbody.MovePosition(_rigidbody.transform.position + moveDir * Speed * Time.fixedDeltaTime);
+	//	_rigidbody.MovePosition(_rigidbody.position + moveDir * Speed * Time.fixedDeltaTime);
+	//}
 
 	void SnapTurn()
 	{

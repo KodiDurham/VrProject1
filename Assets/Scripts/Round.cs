@@ -19,10 +19,12 @@ public class Round : ScriptableObject
 
         for (int i =0; i<highScores.Length;i++)
         {
+
+
             if (num > highScores[i])
             {
                 isHigh = true;
-                highScores[highScores.Length - 1] = num;
+                highScores[0] = num;
                 System.Array.Sort(highScores);
                 break;
             }

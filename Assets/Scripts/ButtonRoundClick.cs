@@ -38,7 +38,7 @@ public class ButtonRoundClick : MonoBehaviour
     public void GetValues()
     {
         childIndex = this.transform.GetSiblingIndex();
-        Debug.Log("" + (childIndex - 1)+" " +gameObject.name );
+        //Debug.Log("" + (childIndex - 1)+" " +gameObject.name );
         if (manager.roundScripts[childIndex - 1].hasFinished)
         {
             GetComponent<Button>().interactable = true;
